@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.BufferStrategy;
@@ -6,8 +5,8 @@ import java.awt.image.BufferStrategy;
 /**
  * Write a description of class Objekt here.
  *
- * @author Leo 
- * @version 09.07.2025
+ * @author NAMENAMENAME, B0bTheBoulder
+ * @version 10.07.2025 01
  */
 
 public class MainClass extends JFrame{
@@ -21,7 +20,7 @@ public class MainClass extends JFrame{
         f.setSize(1920, 1080);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
     }
-
+    
     public static void main(String[] args) {
         new MainClass();
     }

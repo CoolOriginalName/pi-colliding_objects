@@ -5,8 +5,8 @@ import java.awt.GraphicsConfiguration;
 /**
  * Write a description of class MyCanvas here.
  *
- * @author Bbtheboulder
- * @version 09.07.25
+ * @author B0bTheBoulder, NAMENAMENAME
+ * @version 10.07.25 01
  */
 class MyCanvas extends Canvas {
     public static final int heightAll = 850;
@@ -23,11 +23,13 @@ class MyCanvas extends Canvas {
     private int collisioncount = 0;
     private float x1 = initial_position1;
     private float x2 = initial_position2;
-    private String txt = "A";
     private int canvasSize;
     BufferStrategy bs;
     private final Timer timer;
     private boolean buffer = false;
+    
+    Color myBlue = new Color(173, 216, 230);
+    Font stringFont = new Font("SansSerif", Font.PLAIN, 18);
     
 
     public MyCanvas(int pcanvasSize) {
@@ -89,7 +91,8 @@ class MyCanvas extends Canvas {
     }
         
     public void draw(Graphics2D g2){
-        g2.setColor(Color.BLUE);
+        g2.setColor(myBlue);
+        g2.setFont(stringFont);
         g2.fillRect((int)x1, (heightAll-100), 100, 100);
         g2.fillRect((int)x2, (heightAll-size), size, size);
         g2.drawLine(0, heightAll+3, canvasSize, heightAll+3);
@@ -98,8 +101,10 @@ class MyCanvas extends Canvas {
         g2.drawString("masse: " + mass1 + "kg", x1, stringY1);
         int stringY2 = heightAll - 105;
         g2.drawString("masse: " + mass2 + "kg", x2, stringY2);
+        
+        g2.drawString("Collisionsanzahl: " + collisioncount, 500, 500);
     }
-    
+     
     public void movement(){
         x1 = x1 + v1;
         x2 = x2 + v2;
