@@ -1,14 +1,24 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import javax.swing.event.*;
 import java.awt.image.BufferStrategy;
 import java.awt.GraphicsConfiguration;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  * Write a description of class MyCanvas here.
  *
  * @author B0bTheBoulder, NAMENAMENAME
  * @version 10.07.25 01
  */
-class MyCanvas extends Canvas {
+class MyCanvas extends Canvas{
+    static int m;
+    
     public static final int heightAll = 850;
     public static final int size = 100;
     public static final int initial_position1 = 400;
@@ -37,7 +47,10 @@ class MyCanvas extends Canvas {
         canvasSize = pcanvasSize;
         setBackground(Color.BLACK);
         setSize(canvasSize, canvasSize);
-
+        
+        String a = JOptionPane.showInputDialog("Masse 2");
+        m = Integer.parseInt(a);
+        
         timer = new Timer(TIMER_DELAY_MILLIS, (event) -> {
             collision();
             System.out.println(collisioncount);
@@ -47,13 +60,18 @@ class MyCanvas extends Canvas {
         timer.start();
     }
     
+    public void jbtn_ActionPerformed(ActionEvent evt)
+    {
+        
+    }
+    
     public void newVelocitiesObject(){
         //Calculations for end formula
-        float msum=(mass1+mass2);     
-        float a11=(mass1-mass2)/msum; 
-        float a12=2*mass2/msum;
+        float msum=(mass1+m);     
+        float a11=(mass1-m)/msum; 
+        float a12=2*m/msum;
         float a21=2*mass1/msum;
-        float a22=(mass2-mass1)/msum;
+        float a22=(m-mass1)/msum;
 
         float u1=a11*v1+a12*v2; //New Velocity of m1 after collision
         float u2=a21*v1+a22*v2; //New Velocity of m2 after collision
@@ -103,8 +121,15 @@ class MyCanvas extends Canvas {
         g2.drawString("masse: " + mass2 + "kg", x2, stringY2);
         
         g2.drawString("Collisionsanzahl: " + collisioncount, 500, 500);
+        
+        
+        g2.drawString("" + m, 500, 450);
+        
+        //input field that saves variable mass2, 
+        //has to be used outside method
+        //initial mass2 = -10
     }
-     
+    
     public void movement(){
         x1 = x1 + v1;
         x2 = x2 + v2;

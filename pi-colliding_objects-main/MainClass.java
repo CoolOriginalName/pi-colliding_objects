@@ -1,7 +1,7 @@
 import java.awt.*;
 import javax.swing.*;
 import java.awt.image.BufferStrategy;
-
+import javax.swing.JButton;
 /**
  * Write a description of class Objekt here.
  *
